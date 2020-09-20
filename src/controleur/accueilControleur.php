@@ -41,16 +41,30 @@
         echo $twig->render('inscription.html.twig', array('form'=>$form));
     }
 
-    function connexionControleur($twig){
+    function connexionControleur($twig, $db){
         $form = array();
 
         if(isset($_POST['btConnexion'])){
-            $email = $_POST['email'];
-            $password = $POST['password'];
-
             $form['valide'] = true;
-            $form['email'] = $email;
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $utilisateur = new Utilisateur($db);
+
+            $unUtilisateur = $utilisateur->connect($email);
+            
+            if($unUtilisateur!=null){
+                if(!password_verify($password,$unUtilisateur['mdp'])){
+                    $form['valide'] = false;
+                    $form['message'] = 'Login ou mot de passe incorrect';
+                } else {
+                    header("Location:index.php");
+                }
+            } else {
+                $form['valide'] = false;
+                $form['message'] = 'Login ou mot de passe incorrect';
+            }
         }
+        
         echo $twig->render('connexion.html.twig', array('form'=>$form));
     }
 
