@@ -9,6 +9,7 @@
         $lesPages['mentions'] = "mentionsControleur";
         $lesPages['maintenance'] = "maintenanceControleur";
         $lesPages['deconnexion'] = "deconnexionControleur";
+        $lesPages['utilisateur'] = "utilisateurControleur";
         
         if ($db!=null){
             if (isset($_GET['page'])){

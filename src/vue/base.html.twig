@@ -26,6 +26,15 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=mentions">Mentions légales</a>
                 </li>
+                {% if session.role == 1 %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Produits</a>
+                                <a class="dropdown-item" href="index.php?page=utilisateur">Utilisateurs</a>
+                            </div>
+                        </li>
+                    {% endif %}
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -38,17 +47,9 @@
                         <a href="index.php?page=deconnexion"><button type="button" class="btn btn-primary">Se déconnecter</button></a>
                     </li>
                     <li class="nav-item">
-                        <a href="#">{{session.login}}</a>
+                        <a href="#"> {{session.login}} </a>
                     </li>
-                    {% if session.role == 1 %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Produit</a>
-                                
-                            </div>
-                        </li>
-                    {% endif %}
+                    
                 {% else %}
                     <li class="nav-item">
                         <a href="index.php?page=connexion"><button type="button" class="btn btn-primary">Se connecter</button></a>

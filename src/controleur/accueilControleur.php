@@ -30,7 +30,6 @@
                 if(!$exec){
                     $form['valide'] = false;
                     $form['message'] = 'Problème d\'insertion dans la table utilisateur';
-                    print_r($password);
                 }
             }
 
@@ -58,7 +57,7 @@
                     $form['message'] = 'Login ou mot de passe incorrect';
                 } else {
                     $_SESSION['login'] = $email;
-                    $_SESSIOn['role'] = $unUtilisateur['idRole'];
+                    $_SESSION['role'] = $unUtilisateur['idRole'];
                     header("Location:index.php");
                 }
             } else {
