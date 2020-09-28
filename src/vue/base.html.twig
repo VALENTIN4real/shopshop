@@ -33,13 +33,33 @@
             </form>
 
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="index.php?page=connexion"><button type="button" class="btn btn-primary">Se connecter</button></a>
-                </li>
+                {% if session.login is defined %}
+                    <li class="nav-item">
+                        <a href="index.php?page=deconnexion"><button type="button" class="btn btn-primary">Se déconnecter</button></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">{{session.login}}</a>
+                    </li>
+                    {% if session.role == 1 %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Produit</a>
+                                
+                            </div>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li class="nav-item">
+                        <a href="index.php?page=connexion"><button type="button" class="btn btn-primary">Se connecter</button></a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href="index.php?page=inscription"><button type="button" class="btn btn-secondary">S'inscrire</button></a>
+                    </li>
+                {% endif %}
 
-                <li class="nav-item">
-                    <a href="index.php?page=inscription"><button type="button" class="btn btn-secondary">S'inscrire</button></a>
-                </li>
+                
             </ul>
         </div>
     </nav>

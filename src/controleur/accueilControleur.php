@@ -57,6 +57,8 @@
                     $form['valide'] = false;
                     $form['message'] = 'Login ou mot de passe incorrect';
                 } else {
+                    $_SESSION['login'] = $email;
+                    $_SESSIOn['role'] = $unUtilisateur['idRole'];
                     header("Location:index.php");
                 }
             } else {
@@ -66,6 +68,12 @@
         }
         
         echo $twig->render('connexion.html.twig', array('form'=>$form));
+    }
+
+    function deconnexionControleur($twig, $db){
+        session_unset();
+        session_destroy();
+        header("Location:index.php");
     }
 
     function mentionsControleur($twig){
