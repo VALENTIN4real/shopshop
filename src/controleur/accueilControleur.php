@@ -5,6 +5,8 @@
     }
 
     function contactControleur($twig){
+        mail('vmairessevmairesse@gmail.com', "Contact", $_POST['message'], $_POST['email']);
+        
         echo $twig->render('contact.html.twig', array());
     }
 
